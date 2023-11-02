@@ -101,6 +101,11 @@ button:hover {
     font-size: 60px
 }
 
+.cell.ticTacToeTwo{
+    width: 50px;
+    height: 50px; 
+}
+
 .gameContainer {
     display: grid;
     grid-template-columns: repeat(0, auto);
@@ -114,28 +119,49 @@ button:hover {
 .returnMenu {
     opacity: 0%;
     transition: 500ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 324px;
     height: 0px;
+    bottom: -50px;
     pointer-events: none;
 }
 
 .returnMenu.appear {
+    display: flex;
+    position: fixed;
     pointer-events: all;
-    height: 20vh;
     opacity: 100%;
+    bottom: 8vh;
 }
 
 .returnMenu.opacity {
     opacity: 0%;
 }
 
+.returnMenu.restart {
+    bottom: -50px;
+    opacity: 0%;
+}
+
 .restartGameButton {
     background-color: #f7e4ac;
     color: #202f49;
-    margin: 10px;
+    height: 10vh;
+    margin: 4px;
+    width: 45%;
 }
 
 .restartGameButton:hover {
     background-color: #aca48c;
+}
+
+.menuButton {
+    height: 10vh;
+    width: 45%;
+    opacity: 100%;
+    margin: 4px;
 }
 
 .scoreBoard {
@@ -186,7 +212,7 @@ button:hover {
 }
 
 .squareX.win{
-    animation: winner 1200ms infinite;
+    animation: xwinner 1200ms infinite;
 }
 
 .pointsX{
@@ -215,7 +241,7 @@ button:hover {
 }
 
 .squareO.win{
-    animation: winner 1200ms infinite;
+    animation: owinner 1200ms infinite;
 }
 
 .pointsO{
@@ -230,14 +256,26 @@ button:hover {
     font-size: 4.5vh;
 }
 
-@keyframes winner {
+@keyframes xwinner {
     0% {
-        outline: #111722 2px solid;
+     outline: #111722 2px solid;
+    }
+    50% {
+		outline: #ecd7ba 5px solid;
+	}
+	  100% {
+		outline: #111722 2px solid;
+	}
+}
+
+@keyframes owinner {
+    0% {
+     outline: #111722 2px solid;
     }
     50% {
 		outline: #04c0b2 5px solid;
 	}
-	100% {
+	  100% {
 		outline: #111722 2px solid;
 	}
 }

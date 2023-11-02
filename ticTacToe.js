@@ -8,13 +8,11 @@ var victoryCount = {X: 0, O: 0}
 
 var pointsToWin = 3;
 
-var startBasicTicTacToe = document.getElementsByClassName("startBasicTicTacToe")[0];
-
-var gameBoard = document.getElementsByClassName("gameBoard")[0]
-
 var startMenu = document.getElementsByClassName("startMenu")[0];
 
 var returnMenu = document.getElementsByClassName("returnMenu")[0];
+
+var gameBoard = document.getElementsByClassName("gameBoard")[0]
 
 var scoreBoard = document.getElementById("scoreBoard")
 
@@ -26,30 +24,51 @@ var squareX = document.getElementById("squareX")
 
 var squareO = document.getElementById("squareO")
 
+var menuButton = document.getElementById("menuButton")
+
+var startBasicTicTacToe = document.getElementsByClassName("startBasicTicTacToe")[0];
+
 startBasicTicTacToe.addEventListener('click', () => { createBoard(3) });
 
+var startTicTacToe2 = document.getElementById("startTicTacToe2");
+startTicTacToe2.addEventListener('click', () => { createBoard(6) });
+
 function createBoard(cellAmount) {
+     if(cellAmount === 6){
+       pointsToWin = 4;
+     }else {
+        pointsToWin = 3;
+     }
     var board = ""
-    var boardCount = []
+    var boardCode = []
     for (var o = 0; o < cellAmount; o++) {
-        boardCount.push([])
+        boardCode.push([])
         for (var i = 0; i < cellAmount; i++) {
             board += `<div cell-index="${i}" row="${o}" class="cell"></div>`
-            boardCount[o].push('')
+            boardCode[o].push('')
         }
     }
-    game = boardCount
+    game = boardCode
     printBoard(board, cellAmount)
 }
 
 function printBoard(boardHTML, cellAmount) {
     var container = document.createElement('div');
     container.classList.add("gameContainer");
-    var content = boardHTML;
-    container.innerHTML = content;
-    gameBoard.append(container);
+    container.innerHTML = boardHTML;
     container.style.gridTemplateColumns = `repeat(${cellAmount}, auto)`;
+    gameBoard.append(container);
+    
     container.style.width = `${(cellAmount * 100) + (cellAmount * 8)}px`;
+    if(cellAmount === 6){
+        container.style.width = `${(cellAmount * 50) + (cellAmount * 8)}px`;
+        for (var cell = 0; cell <36; cell++){
+            var currentCell = document.getElementsByClassName("cell")[cell]
+            currentCell.classList.add("ticTacToeTwo")
+            console.log(currentCell)
+        }
+      }
+    
     removeMenu();
     const timeOut = setTimeout(appearBoard, 600);
     document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleClick));
@@ -61,8 +80,10 @@ function removeMenu() {
 }
 
 function appearBoard() {
+    returnMenu.classList.remove("restart")
+    returnMenu.classList.add("appear");
+    returnMenu.classList.remove("opacity");
     startMenu.classList.add("displayNone")
-
     gameBoard.classList.add("appear")
 }
 
@@ -266,13 +287,11 @@ function handleClick(clickedCellEvent) {
     } else {
         return;
     }
-
 }
+
 
 function endGame(result) {
     scoreBoard.classList.add("appear")
-    returnMenu.classList.add("appear");
-    returnMenu.classList.remove("opacity");
     if (result === 'draw'){
         draw()
     }else{
@@ -304,7 +323,7 @@ function eraseBoard() {
 
     function removeBoard() {
         gameBoard.classList.add("restart")
-        returnMenu.classList.add("opacity")
+        returnMenu.classList.add("restart")
     }
 
     function cleanGame() {
@@ -318,17 +337,14 @@ function eraseBoard() {
             cell.innerHTML = ""
         }
         gameEnd = false;
-        returnMenu.classList.remove("appear")
     }
 
     function returnBoard() {
         gameBoard.classList.remove("restart")
+        returnMenu.classList.remove("restart")
     }
 
-
 }
-
-var menuButton = document.getElementById("menuButton")
 
 menuButton.addEventListener('click', returnToMenu)
 
@@ -343,7 +359,7 @@ function returnToMenu() {
     function removeBoard() {
         player = "X";
         gameBoard.classList.add("restart")
-        returnMenu.classList.add("opacity")
+        returnMenu.classList.add("restart")
     }
 
     function setDisplay() {
