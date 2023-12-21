@@ -72,30 +72,22 @@ export function cleanGame(game) {
 
 var backgroundLeft = document.getElementById("backgroundLeft");
 var backgroundRight = document.getElementById("backgroundRight");
-var startBasicTicTacToeButton = document.getElementById("startBasicTicTacToe");
-var startTicTacToe2Button = document.getElementById("startTicTacToe2")
-startBasicTicTacToeButton.addEventListener("mouseenter", (event) => {blurLeft()});
-startBasicTicTacToeButton.addEventListener("mouseleave", (event) => {unblurLeft()});
-startTicTacToe2Button.addEventListener("mouseenter", (event) => {blurRight()});
-startTicTacToe2Button.addEventListener("mouseleave", (event) => {unblurRight()});
-backgroundLeft.addEventListener("mouseenter", (event) => {blurLeft()});
-backgroundLeft.addEventListener("mouseleave", (event) => {unblurLeft()});
-backgroundRight.addEventListener("mouseenter", (event) => {blurRight()});
-backgroundRight.addEventListener("mouseleave", (event) => {unblurRight()});
+backgroundLeft.addEventListener("mouseenter", (event) => {focusLeft()});
+backgroundRight.addEventListener("mouseenter", (event) => {focusRight()});
+backgroundLeft.addEventListener("mouseleave", (event) => {focusNone()});
+backgroundRight.addEventListener("mouseleave", (event) => {focusNone()});
 
-function blurLeft(){
-    backgroundLeft.classList.add("hover")
-}
-
-function blurRight(){
+function focusLeft(){
     backgroundRight.classList.add("hover")
-}
-
-function unblurLeft(){
     backgroundLeft.classList.remove("hover")
 }
 
-function unblurRight(){
+function focusRight(){
+    backgroundLeft.classList.add("hover")
     backgroundRight.classList.remove("hover")
 }
 
+function focusNone(){
+    backgroundLeft.classList.remove("hover")
+    backgroundRight.classList.remove("hover")
+}

@@ -44,25 +44,26 @@ button:hover {
     align-items: center;
     justify-content: space-around;
     border-radius: 5%;
+    transform-origin:bottom;
     transform: scale(1.0);
     width: 100vw;
-    transition: 600ms;
+    transition: 1000ms;
     margin: 0px;
+    position: fixed;
 }
 
-.startMenu.remove {
+.startMenu.remove {    
     opacity: 0%;
     pointer-events: none;
-    transform: scale(1.5);
+    transform:translateX(100vw);
 }
 
 .startMenu.displayNone {
-    display: none;
+
 }
 
 .button1{
     display: flex;
-    display: flex;   
     top: 47vh;
     left: 17vw;
     position: absolute;
@@ -70,43 +71,39 @@ button:hover {
   
   .button2{
     display: flex;
-    display: flex;   
     top: 47vh;
     left: 67vw;
     position: absolute;
   }
 
 .startBasicTicTacToe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    background-color: transparent;
-    border: solid 0vw #111722;
-    height: 10vh;
-    width: 30vh;
-    font-size: large;
-    border-radius: 0.5vw;
+    font-size: 10vw;
     transition: 400ms;
-    cursor: pointer;
+    cursor: pointer;  
 }
 
 .startBasicTicTacToe:hover {
-    color: rgb(197, 197, 197);
+    color: rgb(236, 236, 236);
     background-color: transparent;
 }
 
 .startTicTacToe2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
-    background-color: transparent;
-    border: solid 0vw #111722;
-    height: 10vh;
-    width: 30vh;
-    font-size: large;
-    border-radius: 0.5vw;
+    font-size: 8vw;
     transition: 400ms;
-    cursor: pointer;
+    cursor: pointer;  
+    text-align: right;
 }
 
 .startTicTacToe2:hover {
-    color: rgb(197, 197, 197);
+    color: rgb(236, 236, 236);
     background-color: transparent;
 }
 
@@ -136,8 +133,8 @@ button:hover {
 }
 
 .backgroundLeft.hover {
-    background-color: rgb(250, 140, 66);
-    filter: blur(2.5px);
+    background-color: rgb(219, 121, 55);
+    filter: blur(1.5px);
 }
 
 .backgroundRight {
@@ -154,7 +151,7 @@ button:hover {
 
 .backgroundRight.hover {
     background-color: #10a89e;
-    filter: blur(2.5px);
+    filter: blur(1.5px);
 }
 
 .gameBoard {
@@ -249,7 +246,7 @@ button:hover {
 
 .restartGameButton {
     height: 10vh;
-    margin: 0px;
+    margin: 5px;
     background-color: #f7e4ac;
     color: #202f49;
     width: 45%;
@@ -263,7 +260,7 @@ button:hover {
 
 .menuButton {
     height: 10vh;
-    margin: 0px;
+    margin: 5px;
     width: 45%;
     opacity: 100%;
 }
