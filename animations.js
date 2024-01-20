@@ -10,9 +10,18 @@ var squareO = document.getElementById("squareO");
 
 var container = document.getElementById("container")
 
-export function removeMenu() {
-    startMenu.classList.add("remove")
+var body = document.getElementsByClassName("body")[0]
+
+export function removeMenu(x) {
+    if (x === 3){
+        body.classList.remove("right")
+        startMenu.classList.add("left")
+    } else {
+        body.classList.add("right")
+        startMenu.classList.add("right")
+    }
     gameBoard.classList.add("displayFlex")
+    console.log(x)
 }
 
 export function appearBoard() {
@@ -50,7 +59,8 @@ export function putMenuBack(victoryCount) {
     container.classList.remove("appear")
     var gameContainer = document.getElementsByClassName('gameContainer')[0];
     gameContainer.remove()
-    startMenu.classList.remove("remove")
+    startMenu.classList.remove("left")
+    startMenu.classList.remove("right")
     victoryCount.X = 0;
     victoryCount.O = 0;
     pointsX.innerHTML = 0;

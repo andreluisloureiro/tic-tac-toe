@@ -44,7 +44,6 @@ function printBoard(boardHTML, cellAmount) {
     var container = document.createElement('div');
     container.classList.add("gameContainer");
     container.innerHTML = boardHTML;
-    container.style.width = `${(cellAmount * 100) + (cellAmount * 8)}px`;
     container.style.gridTemplateColumns = `repeat(${cellAmount}, auto)`;
     document.getElementById("gameBoard").append(container);
     if (cellAmount === 6) {
@@ -54,9 +53,9 @@ function printBoard(boardHTML, cellAmount) {
             currentCell.classList.add("ticTacToeTwo")
         }
     }
-    const timeOut = setTimeout(appearBoard, 600);
+    const timeOut = setTimeout(appearBoard, 1000);
     document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleClick));
-    removeMenu();
+    removeMenu(pointsToWin);
 }
 
 function calculateDiagonalArrays() {
