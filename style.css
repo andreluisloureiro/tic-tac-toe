@@ -1,12 +1,13 @@
 body {
     font-family: arial, sans-serif;
     margin: 0px;
-    background-color: rgb(250, 140, 66);;
+    background-color: rgb(250, 140, 66);
+    ;
 }
 
 body.right {
     background-color: #04c0b2;
-} 
+}
 
 button {
     color: white;
@@ -48,7 +49,7 @@ button:hover {
     align-items: center;
     justify-content: space-around;
     border-radius: 5%;
-    transform-origin:bottom;
+    transform-origin: bottom;
     transform: scale(1.0);
     width: 100vw;
     transition: 1500ms;
@@ -56,35 +57,31 @@ button:hover {
     position: fixed;
 }
 
-.startMenu.left {    
+.startMenu.left {
     opacity: 0%;
     pointer-events: none;
-    transform:translateX(100vw);
+    transform: translateX(100vw);
 }
 
-.startMenu.right {    
+.startMenu.right {
     opacity: 0%;
     pointer-events: none;
-    transform:translateX(-100vw);
+    transform: translateX(-100vw);
 }
 
-.startMenu.displayNone {
-/* find use for this animation */
-}
-
-.button1{
+.button1 {
     display: flex;
     top: 47vh;
     left: 17vw;
     position: absolute;
-  }
-  
-  .button2{
+}
+
+.button2 {
     display: flex;
     top: 47vh;
     left: 67vw;
     position: absolute;
-  }
+}
 
 .startBasicTicTacToe {
     font-family: 'Roboto Slab', serif;
@@ -94,7 +91,7 @@ button:hover {
     color: white;
     font-size: 10vw;
     transition: 400ms;
-    cursor: pointer;  
+    cursor: pointer;
     margin: 3px;
     text-shadow: black 0px 0px;
 }
@@ -112,7 +109,7 @@ button:hover {
     color: white;
     font-size: 8vw;
     transition: 400ms;
-    cursor: pointer;  
+    cursor: pointer;
     text-align: right;
     margin: 3px;
 }
@@ -199,32 +196,38 @@ button:hover {
     display: flex;
 }
 
+.gameContainer {
+    width: 50vmin;
+    height: 50vmin;
+    margin: 0 auto;
+    background-color: #34495e;
+    color: #fff;
+    border: 6px solid #2c3e50;
+    border-radius: 10px;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.gameContainer.longWay {
+    grid-template: repeat(6, 1fr) / repeat(6, 1fr);
+    width: 60vmin;
+    height: 60vmin;
+}
+
 .cell {
+    border: 6px solid #2c3e50;
+    border-radius: 2px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 4em;
     display: flex;
-    width: 100px;
-    height: 100px;
-    align-items: center;
     justify-content: center;
-    border: 2px solid #ecd7ba;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
+    align-items: center;
+    cursor: pointer;    
 }
 
 .cell.ticTacToeTwo {
-    width: 50px;
-    height: 50px;
-    font-size: 40px;
-}
-
-.gameContainer {
-    display: grid;
-    grid-template-columns: repeat(0, auto);
-    width: 306px;
-    margin: 10px auto;
-    background-color: #11213a;
-    color: #04c0b2;
-    transition: 300ms
+    font-size: 2.5em;
 }
 
 .returnMenu {
@@ -245,7 +248,6 @@ button:hover {
     pointer-events: all;
     opacity: 100%;
     bottom: 8vh;
-    height: 50px;
 }
 
 .returnMenu.opacity {
@@ -317,11 +319,11 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(250, 140, 66);
+    background-color: #2c3e50;
     height: 14.5vh;
     width: 14.5vh;
     border-radius: 0vh 2vh 2vh 0vh;
-    color: #ecd7ba;
+    color: rgb(216, 108, 35);
     font-size: 55px;
     margin-right: 2px;
     outline: #04c0b2 0px solid;
@@ -337,7 +339,7 @@ button:hover {
     align-items: center;
     height: 4.5vh;
     width: 4.5vh;
-    text-shadow: 1px 1px rgb(250, 140, 66);;
+    text-shadow: 1px 1px rgb(221, 90, 3);
     color: white;
     font-size: 4.5vh;
 }
@@ -347,7 +349,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #11213a;
+    background-color: #2c3e50;
     height: 14.5vh;
     width: 14.5vh;
     border-radius: 2vh 0px 0px 2vh;
@@ -374,29 +376,29 @@ button:hover {
 
 @keyframes xwinner {
     0% {
-        outline: #111722 2px solid;
+        outline: #2c3e50 0px solid;
     }
 
     50% {
-        outline: #ecd7ba 5px solid;
+        outline: rgb(255, 255, 255) 5px solid;
     }
 
     100% {
-        outline: #111722 2px solid;
+        outline: #2c3e50 0px solid;
     }
 }
 
 @keyframes owinner {
     0% {
-        outline: #111722 2px solid;
+        outline: #2c3e50 0px solid;
     }
 
     50% {
-        outline: #04c0b2 5px solid;
+        outline: #ffffff 5px solid;
     }
 
     100% {
-        outline: #111722 2px solid;
+        outline: #2c3e50 0px solid;
     }
 }
 

@@ -44,14 +44,16 @@ function printBoard(boardHTML, cellAmount) {
     var container = document.createElement('div');
     container.classList.add("gameContainer");
     container.innerHTML = boardHTML;
-    container.style.gridTemplateColumns = `repeat(${cellAmount}, auto)`;
     document.getElementById("gameBoard").append(container);
     if (cellAmount === 6) {
-        container.style.width = `${(cellAmount * 50) + (cellAmount * 8)}px`;
+        document.getElementsByClassName("gameContainer")[0].classList.add("longWay")
+        // container.style.width = `${(cellAmount * 50) + (cellAmount * 8)}px`;
         for (var cell = 0; cell < 36; cell++) {
             var currentCell = document.getElementsByClassName("cell")[cell]
             currentCell.classList.add("ticTacToeTwo")
         }
+    }else{
+        document.getElementsByClassName("gameContainer")[0].classList.remove("longWay") 
     }
     const timeOut = setTimeout(appearBoard, 1000);
     document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleClick));
