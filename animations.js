@@ -21,7 +21,6 @@ export function removeMenu(x) {
         startMenu.classList.add("right")
     }
     gameBoard.classList.add("displayFlex")
-    console.log(x)
 }
 
 export function appearBoard() {

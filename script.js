@@ -2,6 +2,8 @@ import { removeMenu, appearBoard, removeBoard, returnBoard, setDisplay, putMenuB
 
 var player = "X";
 
+var bot;
+
 var gameEnd = false;
 
 var game = '';
@@ -52,8 +54,8 @@ function printBoard(boardHTML, cellAmount) {
             var currentCell = document.getElementsByClassName("cell")[cell]
             currentCell.classList.add("ticTacToeTwo")
         }
-    }else{
-        document.getElementsByClassName("gameContainer")[0].classList.remove("longWay") 
+    } else {
+        document.getElementsByClassName("gameContainer")[0].classList.remove("longWay")
     }
     const timeOut = setTimeout(appearBoard, 1000);
     document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleClick));
@@ -125,7 +127,10 @@ function checkHorizontal(squareNumbers, xPoints, oPoints) {
             }
             if (xPoints === pointsToWin || oPoints === pointsToWin) {
                 endGame()
+                gameEnd = true;
+                console.log("end")
                 return
+                
             }
         }
         xPoints = 0;
@@ -218,23 +223,43 @@ function checkDraw() {
     if (occupiedSpaces === game.length * game.length) {
         endGame("draw")
     }
+    if (gameEnd === true || player === "X"){
+        return
+    } else {
+            console.log("bot")
+            randomizerd()
+    }
 }
+
+console.log(player)
 
 function handleBoard(clickedCell, clickedCellIndex, row) {
     if (game[row][clickedCellIndex] != '') {
-        setArraysForChecking()
         return
     } else {
         game[row][clickedCellIndex] = player;
         clickedCell.innerHTML = player;
         var colour = player === "X" ? "#d86c23" : "#04c0b2";
         clickedCell.style.color = colour;
+        player = player === "X" ? "O" : "X";
     }
-    player = player === "X" ? "O" : "X";
     setArraysForChecking()
 }
 
+function randomizerd() {
+    console.log("??")
+    var botCell = document.getElementsByClassName("cell")[Math.floor(Math.random() * 9)]
+    if (botCell.innerHTML === "X" || botCell.innerHTML === "O"){
+        randomizerd();
+    } else {
+        var botClickedCellIndex = parseInt(botCell.getAttribute('cell-index'));
+        var botRow = parseInt(botCell.getAttribute('row'));
+        handleBoard(botCell, botClickedCellIndex, botRow);
+    }
+}
+
 function handleClick(clickedCellEvent) {
+    player = "X";
     const clickedCell = clickedCellEvent.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('cell-index'));
     const row = parseInt(clickedCell.getAttribute('row'));

@@ -101,6 +101,20 @@ button:hover {
     background-color: transparent;
 }
 
+.basicTicTacToeTextDiv{
+    font-family: 'Roboto Slab', serif;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    bottom: 0px;
+    color: white;
+    transition: 400ms;
+    cursor: pointer;
+    margin: 3px;
+    text-shadow: black 0px 0px;
+}
+
 .startTicTacToe2 {
     font-family: 'Roboto Slab', serif;
     display: flex;
