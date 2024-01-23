@@ -226,8 +226,7 @@ function checkDraw() {
     if (gameEnd === true || player === "X"){
         return
     } else {
-            console.log("bot")
-            randomizerd()
+            randomized()
     }
 }
 
@@ -246,11 +245,10 @@ function handleBoard(clickedCell, clickedCellIndex, row) {
     setArraysForChecking()
 }
 
-function randomizerd() {
-    console.log("??")
+function randomized() {
     var botCell = document.getElementsByClassName("cell")[Math.floor(Math.random() * 9)]
     if (botCell.innerHTML === "X" || botCell.innerHTML === "O"){
-        randomizerd();
+        randomized();
     } else {
         var botClickedCellIndex = parseInt(botCell.getAttribute('cell-index'));
         var botRow = parseInt(botCell.getAttribute('row'));
