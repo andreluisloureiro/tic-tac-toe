@@ -2,7 +2,9 @@ import { removeMenu, appearBoard, removeBoard, returnBoard, setDisplay, putMenuB
 
 var player = "X";
 
-var bot;
+var bot = false;
+
+var currentPlayerCell = [];
 
 var gameEnd = false;
 
@@ -223,14 +225,12 @@ function checkDraw() {
     if (occupiedSpaces === game.length * game.length) {
         endGame("draw")
     }
-    if (gameEnd === true || player === "X"){
+    if (player === "X" || occupiedSpaces === game.length * game.length){
         return
-    } else {
+    } else if (bot === true){
             randomized()
     }
 }
-
-console.log(player)
 
 function handleBoard(clickedCell, clickedCellIndex, row) {
     if (game[row][clickedCellIndex] != '') {
@@ -246,21 +246,45 @@ function handleBoard(clickedCell, clickedCellIndex, row) {
 }
 
 function randomized() {
-    var botCell = document.getElementsByClassName("cell")[Math.floor(Math.random() * 9)]
-    if (botCell.innerHTML === "X" || botCell.innerHTML === "O"){
-        randomized();
-    } else {
+    for (var i = 0; i <game.length*game.length ;i++){
+        var botCell = document.getElementsByClassName("cell")[i]
         var botClickedCellIndex = parseInt(botCell.getAttribute('cell-index'));
         var botRow = parseInt(botCell.getAttribute('row'));
+    if (botClickedCellIndex != currentPlayerCell[1]){
+        
+    } else {
+        console.log(botCell)
+        if (botCell.innerHTML === "X" || botCell.innerHTML === "O"){
+            redraw()
+            function redraw() {
+                botCell = document.getElementsByClassName("cell")[Math.floor(Math.random() * 9)]
+                if (botCell.innerHTML === "X" || botCell.innerHTML === "O"){
+                    redraw();
+                } else {
+                    botClickedCellIndex = parseInt(botCell.getAttribute('cell-index'));
+                    botRow = parseInt(botCell.getAttribute('row'));
+                }
+            }
+            console.log(botCell)
+        }
         handleBoard(botCell, botClickedCellIndex, botRow);
+        i = game.length*game.length;
     }
+    
+    }
+    currentPlayerCell = [];
 }
 
 function handleClick(clickedCellEvent) {
-    player = "X";
+    if (bot === true){
+        player = "X";
+    }
     const clickedCell = clickedCellEvent.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('cell-index'));
     const row = parseInt(clickedCell.getAttribute('row'));
+    currentPlayerCell.push(clickedCell)
+    currentPlayerCell.push(clickedCellIndex)
+    currentPlayerCell.push(row)
     if (gameEnd === false) {
         handleBoard(clickedCell, clickedCellIndex, row);
     } else {
