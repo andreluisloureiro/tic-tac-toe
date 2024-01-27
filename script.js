@@ -24,7 +24,15 @@ document.getElementById("startBasicTicTacToe").addEventListener('click', () => {
 
 document.getElementById("startTicTacToe2").addEventListener('click', () => { createBoard(6) });
 
+
 function createBoard(cellAmount) {
+    if (player === "X"){
+        document.getElementById("squareX").classList.add("current");
+        document.getElementById("squareO").classList.remove("current");
+    }else {
+        document.getElementById("squareO").classList.add("current");
+        document.getElementById("squareX").classList.remove("current");
+    }
     if (cellAmount === 6) {
         pointsToWin = 4;
     } else {
@@ -132,7 +140,6 @@ function checkHorizontal(squareNumbers, xPoints, oPoints) {
                 gameEnd = true;
                 console.log("end")
                 return
-                
             }
         }
         xPoints = 0;
@@ -225,11 +232,12 @@ function checkDraw() {
     if (occupiedSpaces === game.length * game.length) {
         endGame("draw")
     }
-    if (player === "X" || occupiedSpaces === game.length * game.length){
+    if (player === "X" || occupiedSpaces === game.length * game.length) {
         return
-    } else if (bot === true){
-            randomized()
+    } else if (bot === true) {
+        randomized()
     }
+    console.log(gameEnd)
 }
 
 function handleBoard(clickedCell, clickedCellIndex, row) {
@@ -246,37 +254,34 @@ function handleBoard(clickedCell, clickedCellIndex, row) {
 }
 
 function randomized() {
-    for (var i = 0; i <game.length*game.length ;i++){
+    for (var i = 0; i < game.length * game.length; i++) {
         var botCell = document.getElementsByClassName("cell")[i]
         var botClickedCellIndex = parseInt(botCell.getAttribute('cell-index'));
         var botRow = parseInt(botCell.getAttribute('row'));
-    if (botClickedCellIndex != currentPlayerCell[1]){
-        
-    } else {
-        console.log(botCell)
-        if (botCell.innerHTML === "X" || botCell.innerHTML === "O"){
-            redraw()
-            function redraw() {
-                botCell = document.getElementsByClassName("cell")[Math.floor(Math.random() * 9)]
-                if (botCell.innerHTML === "X" || botCell.innerHTML === "O"){
-                    redraw();
-                } else {
-                    botClickedCellIndex = parseInt(botCell.getAttribute('cell-index'));
-                    botRow = parseInt(botCell.getAttribute('row'));
+        if (botClickedCellIndex != currentPlayerCell[1]) {
+            console.log(botCell)
+        } else {
+            if (botCell.innerHTML === "X" || botCell.innerHTML === "O") {
+                redraw()
+                function redraw() {
+                    botCell = document.getElementsByClassName("cell")[Math.floor(Math.random() * 9)]
+                    if (botCell.innerHTML === "X" || botCell.innerHTML === "O") {
+                        redraw();
+                    } else {
+                        botClickedCellIndex = parseInt(botCell.getAttribute('cell-index'));
+                        botRow = parseInt(botCell.getAttribute('row'));
+                    }
                 }
             }
-            console.log(botCell)
+            handleBoard(botCell, botClickedCellIndex, botRow);
+            i = game.length * game.length;
         }
-        handleBoard(botCell, botClickedCellIndex, botRow);
-        i = game.length*game.length;
-    }
-    
     }
     currentPlayerCell = [];
 }
 
 function handleClick(clickedCellEvent) {
-    if (bot === true){
+    if (bot === true) {
         player = "X";
     }
     const clickedCell = clickedCellEvent.target;
@@ -287,6 +292,15 @@ function handleClick(clickedCellEvent) {
     currentPlayerCell.push(row)
     if (gameEnd === false) {
         handleBoard(clickedCell, clickedCellIndex, row);
+        if (gameEnd === false) {
+            if (player === "X"){
+                document.getElementById("squareX").classList.add("current");
+                document.getElementById("squareO").classList.remove("current");
+            }else {
+                document.getElementById("squareO").classList.add("current");
+                document.getElementById("squareX").classList.remove("current");
+            }
+        } 
     } else {
         return;
     }
@@ -301,10 +315,12 @@ function endGame(result) {
         if (player === "O") {
             victoryCount.X += 1;
             pointsX.innerHTML = victoryCount.X;
+            document.getElementById("squareX").classList.remove("current");
             document.getElementById("squareX").classList.add("win");
         } else if (player === "X") {
             victoryCount.O += 1;
             pointsO.innerHTML = victoryCount.O;
+            document.getElementById("squareO").classList.remove("current");
             document.getElementById("squareO").classList.add("win");
         }
     };

@@ -10,13 +10,9 @@ body.right {
 }
 
 button {
-    color: white;
-    background-color: #3f5074;
     border: solid 0vw #111722;
-    height: 10vh;
-    width: 30vh;
     font-size: medium;
-    border-radius: 0.5vw;
+    border-radius: 2vh 2vh 0vw 0vw;
     transition: 400ms;
     cursor: pointer;
 }
@@ -101,7 +97,7 @@ button:hover {
     background-color: transparent;
 }
 
-.basicTicTacToeTextDiv{
+.basicTicTacToeTextDiv {
     font-family: 'Roboto Slab', serif;
     display: flex;
     position: absolute;
@@ -237,7 +233,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .cell.ticTacToeTwo {
@@ -251,8 +247,8 @@ button:hover {
     align-items: center;
     justify-content: center;
     width: 324px;
-    height: 0px;
-    bottom: -50px;
+    height: 10vh;
+    bottom: -20vh;
     pointer-events: none;
 }
 
@@ -261,7 +257,7 @@ button:hover {
     position: fixed;
     pointer-events: all;
     opacity: 100%;
-    bottom: 8vh;
+    bottom: 0px;
 }
 
 .returnMenu.opacity {
@@ -269,7 +265,7 @@ button:hover {
 }
 
 .returnMenu.restart {
-    bottom: -50px;
+    bottom: -20vh;
     opacity: 0%;
 }
 
@@ -278,22 +274,22 @@ button:hover {
 .restartGameButton {
     height: 10vh;
     margin: 5px;
-    background-color: #f7e4ac;
-    color: #202f49;
+    background-color: rgb(245, 113, 25);
+    color: #ffffff;
     width: 45%;
+    font-family: Helvetica;
+    font-weight: bold;
 }
-
-.restartGameButton:hover {
-    background-color: #aca48c;
-}
-
-/* fix bottom margin*/
 
 .menuButton {
     height: 10vh;
     margin: 5px;
     width: 45%;
     opacity: 100%;
+    background-color: rgb(2, 150, 140);
+    color: #ffffff;
+    font-family: Helvetica;
+    font-weight: bold;
 }
 
 .scoreBoard {
@@ -337,15 +333,21 @@ button:hover {
     height: 14.5vh;
     width: 14.5vh;
     border-radius: 0vh 2vh 2vh 0vh;
-    color: rgb(216, 108, 35);
+    color: rgb(221, 90, 3);
     font-size: 55px;
     margin-right: 2px;
-    outline: #04c0b2 0px solid;
 }
 
 .squareX.win {
-    animation: xwinner 1200ms infinite;
+    color: rgb(221, 90, 3);
+    animation: xwinner 1800ms infinite;
 }
+
+.squareX.current {
+    color: rgb(255, 255, 255);
+    animation: xwinner 1800ms infinite;
+}
+
 
 .pointsX {
     display: flex;
@@ -373,8 +375,15 @@ button:hover {
 }
 
 .squareO.win {
+    color: rgb(2, 150, 140);
     animation: owinner 1200ms infinite;
 }
+
+.squareO.current {
+    color: rgb(255, 255, 255);
+    animation: owinner 1200ms infinite;
+}
+
 
 .pointsO {
     display: flex;
@@ -390,32 +399,66 @@ button:hover {
 
 @keyframes xwinner {
     0% {
-        outline: #2c3e50 0px solid;
+        outline:  0px transparent;
     }
 
     50% {
-        outline: rgb(255, 255, 255) 5px solid;
+        outline:  5px solid;
     }
 
     100% {
-        outline: #2c3e50 0px solid;
+        outline:  0px transparent;
     }
 }
 
 @keyframes owinner {
     0% {
-        outline: #2c3e50 0px solid;
+        outline:  0px transparent;
     }
 
     50% {
-        outline: #ffffff 5px solid;
+        outline:  5px solid;
     }
 
     100% {
-        outline: #2c3e50 0px solid;
+        outline:  0px transparent;
     }
 }
 
+@media (max-width : 660px) {
+    .gameContainer {
+        width: 77vmin;
+        height: 77vmin;
+    }
+
+    .scoreBoard {
+        height: 20vh;
+        top: 0px;
+    }
+
+    .scoreBoard.appear {
+        width: 101vw;
+    }
+
+    .returnMenu {
+        height: 20vh;
+        width: 101vw;
+        justify-content: space-between;
+    }
+
+    .restartGameButton {
+        border-radius: 0vh 2vh 2vh 0vh;
+        margin: 0px;
+        font-size: x-large;
+    }
+
+    .menuButton {
+        border-radius: 2vh 0vh 0vh 2vh;
+        margin: 0px;
+        font-size: x-large;
+    }
+
+}
 
 /* color: #d7a62f;
     background-color: #f7e4ac;

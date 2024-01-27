@@ -25,6 +25,7 @@ export function removeMenu(x) {
 
 export function appearBoard() {
     //container variable name == bad
+    document.getElementById("scoreBoard").classList.add("appear");
     container.classList.add("appear")
     returnMenu.classList.remove("restart")
     returnMenu.classList.add("appear");
