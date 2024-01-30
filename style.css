@@ -212,7 +212,7 @@ button:hover {
     margin: 0 auto;
     background-color: #34495e;
     color: #fff;
-    border: 6px solid #2c3e50;
+    border: 1vh solid #2c3e50;
     border-radius: 10px;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
@@ -225,11 +225,11 @@ button:hover {
 }
 
 .cell {
-    border: 6px solid #2c3e50;
-    border-radius: 2px;
+    border: 1vh solid #2c3e50;
+    border-radius: 1px;
     font-family: Helvetica;
     font-weight: bold;
-    font-size: 4em;
+    font-size: 10vmin;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -431,6 +431,10 @@ button:hover {
         height: 77vmin;
     }
 
+    .cell {
+        font-size: 15vmin;
+    }
+
     .scoreBoard {
         height: 20vh;
         top: 0px;
@@ -465,3 +469,56 @@ button:hover {
     color: #5586e2;
     border: 2px solid #d86c23
 */
+
+.vl {
+    position: absolute;
+    height: 0px;
+    width: 5px;
+    background-color: rgb(221, 90, 3);
+    transition: 150ms;
+}
+
+.vl.firstRow {
+    transform: rotate(90deg) translateX(-17vmin);
+}
+
+.vl.secondRow {
+    transform: rotate(90deg);
+}
+
+.vl.thirdRow {
+    transform: rotate(90deg) translateX(16.5vmin);
+}
+
+.vl.firstColumn{
+    transform: translateX(-16.7vmin);;
+}
+
+.vl.secondColumn {
+    transform:  translateX(0vmin);
+}
+
+.vl.thirdColumn {
+    transform: translateX(16.6vmin);
+}
+
+.vl.negative {
+    transform: rotate(135deg);
+}
+
+.vl.positive {
+    transform: rotate(45deg);
+}
+
+.vl.appear {
+    height: 48vmin;
+    width: 5px;
+    transition: 300ms;
+}
+
+.vl.diagonal {
+    height: 67vmin;
+    width: 5px;
+    transition: 300ms;
+}
+

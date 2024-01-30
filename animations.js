@@ -45,6 +45,8 @@ export function removeBoard() {
 export function returnBoard() {
     gameBoard.classList.remove("restart")
     returnMenu.classList.remove("restart")
+    console.log("??")
+    document.getElementsByClassName("vl")[0].className = 'vl';
 }
 
 export function setDisplay() {
