@@ -24,13 +24,7 @@ document.getElementById("startTicTacToe2").addEventListener('click', () => { cre
 
 
 function createBoard(cellAmount) {
-    if (player === "X"){
-        document.getElementById("squareX").classList.add("current");
-        document.getElementById("squareO").classList.remove("current");
-    }else {
-        document.getElementById("squareO").classList.add("current");
-        document.getElementById("squareX").classList.remove("current");
-    }
+    currentPlayer()
     if (cellAmount === 6) {
         pointsToWin = 4;
     } else {
@@ -102,19 +96,20 @@ function calculateDiagonalArrays() {
             diagonalArrays[2].push(o)
         }
     }
+
     diagonalArrays[3] = [...Array(game.length).keys()].map(i => i + 1).concat([...Array(game.length - 1).keys()].map(i => game.length - i - 1));
 }
 
 function setArraysForChecking() {
-    let squareNumbers = game.length;
+    let boardSize = game.length;
     let xPoints = 0;
     let oPoints = 0;
-    checkGame(squareNumbers, xPoints, oPoints)
+    checkGame(boardSize, xPoints, oPoints)
 }
 
-function checkGame(squareNumbers, xPoints, oPoints) {
-    checkHorizontal(squareNumbers, xPoints, oPoints)
-    checkVertical(squareNumbers, xPoints, oPoints)
+function checkGame(boardSize, xPoints, oPoints) {
+    checkHorizontal(boardSize, xPoints, oPoints)
+    checkVertical(boardSize, xPoints, oPoints)
     checkDiagonalPositive(xPoints, oPoints, diagonalArrays)
     checkDiagonalNegative(xPoints, oPoints, diagonalArrays)
     checkDraw()
@@ -141,55 +136,9 @@ function checkHorizontal(squareNumbers, xPoints, oPoints) {
         }
         xPoints = 0;
         oPoints = 0;
-        currentLine = [];
     }
 }
 
-function drawLine(direction, line) {
-    if (direction === "horizontal"){
-        if (line === 0){
-            document.getElementsByClassName("vl")[0].classList.add("firstRow")
-        }
-        if (line === 1){
-            document.getElementsByClassName("vl")[0].classList.add("secondRow")
-        }
-        if (line === 2){
-            document.getElementsByClassName("vl")[0].classList.add("thirdRow")
-        }
-        setTimeout(() => { lineAppear() }, "150");
-    }
-
-    if (direction === "vertical"){
-        if (line === 0){
-            document.getElementsByClassName("vl")[0].classList.add("firstColumn")
-        }
-        if (line === 1){
-            document.getElementsByClassName("vl")[0].classList.add("secondColumn")
-        }
-        if (line === 2){
-            document.getElementsByClassName("vl")[0].classList.add("thirdColumn")
-        }
-        setTimeout(() => { lineAppear() }, "150");
-    }
-
-    if (direction === "negative"){
-        document.getElementsByClassName("vl")[0].classList.add("negative")
-        setTimeout(() => { lineAppearDiagonal() }, "150");
-    }
-
-    if (direction === "positive"){
-        document.getElementsByClassName("vl")[0].classList.add("positive")
-        setTimeout(() => { lineAppearDiagonal() }, "150");
-    }
-
-    function lineAppear(){
-        document.getElementsByClassName("vl")[0].classList.add("appear")
-    }
-
-    function lineAppearDiagonal(){
-        document.getElementsByClassName("vl")[0].classList.add("diagonal")
-    }
-}
 
 function checkVertical(squareNumbers, xPoints, oPoints) {
     for (var column = 0; column < squareNumbers; column++) {
@@ -231,7 +180,7 @@ function checkDiagonalPositive(xPoints, oPoints, diagonalArrays) {
                 xPoints = 0;
                 oPoints = 0;
             } if (xPoints === pointsToWin || oPoints === pointsToWin) {
-                drawLine("negative")  
+                drawLine("negative")
                 endGame();
                 return
             }
@@ -257,7 +206,7 @@ function checkDiagonalNegative(xPoints, oPoints, diagonalArrays) {
                 xPoints = 0;
                 oPoints = 0;
             } if (xPoints === pointsToWin || oPoints === pointsToWin) {
-                drawLine("positive")  
+                drawLine("positive")
                 endGame();
                 return
             }
@@ -278,14 +227,12 @@ function checkDraw() {
     }
     if (occupiedSpaces === game.length * game.length) {
         endGame("draw")
-        console.log("caralho")
     }
     if (player === "X" || occupiedSpaces === game.length * game.length) {
         return
     } else if (bot === true) {
         randomized()
     }
-    console.log(gameEnd)
 }
 
 function handleBoard(clickedCell, clickedCellIndex, row) {
@@ -307,7 +254,7 @@ function randomized() {
         var botClickedCellIndex = parseInt(botCell.getAttribute('cell-index'));
         var botRow = parseInt(botCell.getAttribute('row'));
         if (botClickedCellIndex != currentPlayerCell[1]) {
-            console.log(botCell)
+
         } else {
             if (botCell.innerHTML === "X" || botCell.innerHTML === "O") {
                 redraw()
@@ -329,49 +276,57 @@ function randomized() {
 }
 
 function handleClick(clickedCellEvent) {
-    if (bot === true) {
+    if (bot) {
         player = "X";
     }
+
+    if (gameEnd) {
+        return;
+    }
+
     const clickedCell = clickedCellEvent.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('cell-index'));
     const row = parseInt(clickedCell.getAttribute('row'));
-    currentPlayerCell.push(clickedCell)
-    currentPlayerCell.push(clickedCellIndex)
-    currentPlayerCell.push(row)
-    if (gameEnd === false) {
-        if (gameEnd === false) {
-            if (player === "O"){
-                document.getElementById("squareX").classList.add("current");
-                document.getElementById("squareO").classList.remove("current");
-            }else {
-                document.getElementById("squareO").classList.add("current");
-                document.getElementById("squareX").classList.remove("current");
-            }
-        } 
-        handleBoard(clickedCell, clickedCellIndex, row);
+
+    currentPlayerCell.push(clickedCell, clickedCellIndex, row);
+
+    const squareX = document.getElementById("squareX");
+    const squareO = document.getElementById("squareO");
+
+    if (player === "O") {
+        squareX.classList.add("current");
+        squareO.classList.remove("current");
     } else {
-        return;
+        squareO.classList.add("current");
+        squareX.classList.remove("current");
     }
+
+    handleBoard(clickedCell, clickedCellIndex, row);
 }
+
 
 
 function endGame(result) {
     document.getElementById("squareX").classList.remove("current");
     document.getElementById("squareO").classList.remove("current");
     document.getElementById("scoreBoard").classList.add("appear");
+
     if (result === 'draw') {
         return
     } else {
         if (player === "O") {
             victoryCount.X += 1;
             document.getElementById("pointsX").innerHTML = victoryCount.X;
+            document.getElementsByClassName("vl")[0].style.background = "rgb(221, 90, 3)";
             document.getElementById("squareX").classList.add("win");
         } else if (player === "X") {
             victoryCount.O += 1;
             document.getElementById("pointsO").innerHTML = victoryCount.O;
+            document.getElementsByClassName("vl")[0].style.background = "rgb(4, 192, 178)";
             document.getElementById("squareO").classList.add("win");
         }
     };
+
     gameEnd = true;
 }
 
@@ -383,6 +338,7 @@ function eraseBoard() {
     removeBoard()
     setTimeout(() => { cleanGame(game) }, "600");
     setTimeout(() => { returnBoard() }, "800");
+    currentPlayer()
     gameEnd = false;
 }
 
@@ -394,3 +350,47 @@ function returnToMenu() {
     gameEnd = false;
 }
 
+function currentPlayer() {
+    const squareX = document.getElementById("squareX");
+    const squareO = document.getElementById("squareO");
+
+    if (squareX && squareO) {
+        squareX.classList.toggle("current", player === "X");
+        squareO.classList.toggle("current", player === "O");
+    }
+}
+
+
+function drawLine(direction, line) {
+    const vlElement = document.getElementsByClassName("vl")[0];
+
+    switch (direction) {
+        case "horizontal":
+            if (line >= 0 && line <= 2) {
+                vlElement.classList.add(`row${line + 1}`);
+            }
+            setTimeout(() => showLine(), 150);
+            break;
+
+        case "vertical":
+            if (line === 0 || line === 2) {
+                vlElement.classList.add(`column${line + 1}`);
+            }
+            setTimeout(() => showLine(), 150);
+            break;
+
+        case "negative":
+        case "positive":
+            vlElement.classList.add(direction);
+            setTimeout(() => showDiagonalLine(), 150);
+            break;
+    }
+
+    function showLine() {
+        vlElement.classList.add("appear");
+    }
+
+    function showDiagonalLine() {
+        vlElement.classList.add("diagonal");
+    }
+}

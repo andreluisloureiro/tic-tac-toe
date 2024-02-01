@@ -24,7 +24,6 @@ export function removeMenu(x) {
 }
 
 export function appearBoard() {
-    //container variable name == bad
     document.getElementById("scoreBoard").classList.add("appear");
     container.classList.add("appear")
     returnMenu.classList.remove("restart")
@@ -45,7 +44,7 @@ export function removeBoard() {
 export function returnBoard() {
     gameBoard.classList.remove("restart")
     returnMenu.classList.remove("restart")
-    console.log("??")
+    document.getElementById("scoreBoard").classList.add("appear");
     document.getElementsByClassName("vl")[0].className = 'vl';
 }
 
@@ -58,6 +57,7 @@ export function setDisplay() {
 }
 
 export function putMenuBack(victoryCount) {
+    document.getElementsByClassName("vl")[0].className = 'vl';
     container.classList.remove("appear")
     var gameContainer = document.getElementsByClassName('gameContainer')[0];
     gameContainer.remove()

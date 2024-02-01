@@ -2,7 +2,6 @@ body {
     font-family: arial, sans-serif;
     margin: 0px;
     background-color: rgb(250, 140, 66);
-    ;
 }
 
 body.right {
@@ -376,12 +375,12 @@ button:hover {
 
 .squareO.win {
     color: rgb(2, 150, 140);
-    animation: owinner 1200ms infinite;
+    animation: owinner 1800ms infinite;
 }
 
 .squareO.current {
     color: rgb(255, 255, 255);
-    animation: owinner 1200ms infinite;
+    animation: owinner 1800ms infinite;
 }
 
 
@@ -425,6 +424,61 @@ button:hover {
     }
 }
 
+
+
+/* color: #d7a62f;
+    background-color: #f7e4ac;
+    color: #5586e2;
+    border: 2px solid #d86c23
+*/
+
+.vl {
+    position: absolute;
+    height: 0px;
+    width: 5px;
+    transition: 150ms;
+}
+
+.vl.row1 {
+    transform: rotate(90deg) translateX(-16.7vmin);
+}
+
+.vl.row2 {
+    transform: rotate(90deg);
+}
+
+.vl.row3 {
+    transform: rotate(90deg) translateX(16.6vmin);
+}
+
+.vl.column1{
+    transform: translateX(-16.7vmin);;
+}
+
+.vl.column3 {
+    transform: translateX(16.6vmin);
+}
+
+.vl.negative {
+    transform: rotate(135deg);
+}
+
+.vl.positive {
+    transform: rotate(45deg);
+}
+
+.vl.appear {
+    height: 48vmin;
+    transition: 300ms;
+}
+
+.vl.diagonal {
+    height: 67vmin;
+    transition: 300ms;
+}
+
+
+
 @media (max-width : 660px) {
     .gameContainer {
         width: 77vmin;
@@ -462,63 +516,32 @@ button:hover {
         font-size: x-large;
     }
 
+    .vl.appear {
+        height: 73vmin;
+        transition: 300ms;
+    }
+    
+    .vl.diagonal {
+        height: 97vmin;
+        transition: 300ms;
+    }
+
+    .vl.row1 {
+        transform: rotate(90deg) translateX(-16.7vmin);
+    }
+    
+    .vl.row3 {
+        transform: rotate(90deg) translateX(16.6vmin);
+    }
+    
+    .vl.column1{
+        transform: translateX(-16.7vmin);;
+    }
+    
+    .vl.column3 {
+        transform: translateX(16.6vmin);
+    }
+
+
+
 }
-
-/* color: #d7a62f;
-    background-color: #f7e4ac;
-    color: #5586e2;
-    border: 2px solid #d86c23
-*/
-
-.vl {
-    position: absolute;
-    height: 0px;
-    width: 5px;
-    background-color: rgb(221, 90, 3);
-    transition: 150ms;
-}
-
-.vl.firstRow {
-    transform: rotate(90deg) translateX(-17vmin);
-}
-
-.vl.secondRow {
-    transform: rotate(90deg);
-}
-
-.vl.thirdRow {
-    transform: rotate(90deg) translateX(16.5vmin);
-}
-
-.vl.firstColumn{
-    transform: translateX(-16.7vmin);;
-}
-
-.vl.secondColumn {
-    transform:  translateX(0vmin);
-}
-
-.vl.thirdColumn {
-    transform: translateX(16.6vmin);
-}
-
-.vl.negative {
-    transform: rotate(135deg);
-}
-
-.vl.positive {
-    transform: rotate(45deg);
-}
-
-.vl.appear {
-    height: 48vmin;
-    width: 5px;
-    transition: 300ms;
-}
-
-.vl.diagonal {
-    height: 67vmin;
-    width: 5px;
-    transition: 300ms;
-}
-
