@@ -25,11 +25,7 @@ document.getElementById("startTicTacToe2").addEventListener('click', () => { cre
 
 function createBoard(cellAmount) {
     currentPlayer()
-    if (cellAmount === 6) {
-        pointsToWin = 4;
-    } else {
-        pointsToWin = 3;
-    }
+    pointsToWin = cellAmount === 6 ? 4 : 3;
     var board = "";
     var boardCode = [];
     for (var o = 0; o < cellAmount; o++) {
