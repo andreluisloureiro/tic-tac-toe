@@ -214,22 +214,33 @@ function checkDiagonalNegative(xPoints, oPoints, diagonalArrays) {
 
 function checkDraw() {
     var occupiedSpaces = 0;
+
+    // Count the occupied spaces on the game board
     for (let row = 0; row < game.length; row++) {
-        for (let column = 0; column < game.length; column++) {
-            if (game[row][column] === "X" || game[row][column] === "O") {
-                occupiedSpaces += 1
+        for (let column = 0; column < game[row].length; column++) {
+            if (["X", "O"].includes(game[row][column])) {
+                occupiedSpaces++;
             }
         }
     }
+
+    // Check for a draw
     if (occupiedSpaces === game.length * game.length) {
-        endGame("draw")
+        endGame("draw");
+        return; // No need to continue if it's a draw
     }
+
+    // If the current player is "X" or the game is already a draw, return
     if (player === "X" || occupiedSpaces === game.length * game.length) {
-        return
-    } else if (bot === true) {
-        randomized()
+        return;
+    }
+
+    // If the player is "O" and it's not a draw, and if it's a game with a bot, call the randomized function
+    if (bot === true) {
+        randomized();
     }
 }
+
 
 function handleBoard(clickedCell, clickedCellIndex, row) {
     if (game[row][clickedCellIndex] != '') {
@@ -308,6 +319,7 @@ function endGame(result) {
     document.getElementById("scoreBoard").classList.add("appear");
 
     if (result === 'draw') {
+        gameEnd = true;
         return
     } else {
         if (player === "O") {

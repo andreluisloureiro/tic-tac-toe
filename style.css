@@ -219,8 +219,8 @@ button:hover {
 
 .gameContainer.longWay {
     grid-template: repeat(6, 1fr) / repeat(6, 1fr);
-    width: 60vmin;
-    height: 60vmin;
+    width: 90vmin;
+    height: 90vmin;
 }
 
 .cell {
@@ -236,7 +236,7 @@ button:hover {
 }
 
 .cell.ticTacToeTwo {
-    font-size: 2.5em;
+    font-size: 7vmin;
 }
 
 .returnMenu {
@@ -528,15 +528,15 @@ button:hover {
     }
 
     .vl.row1 {
-        transform: rotate(90deg) translateX(-25.9vmin);
+        transform: rotate(90deg) translateX(-25.8vmin);
     }
     
     .vl.row3 {
-        transform: rotate(90deg) translateX(25.6vmin);
+        transform: rotate(90deg) translateX(25.7vmin);
     }
     
     .vl.column1{
-        transform: translateX(-25.9vmin);;
+        transform: translateX(-25.8vmin);;
     }
     
     .vl.column3 {
