@@ -409,5 +409,5 @@ function drawLine(direction, line) {
 }
 
 function handleVibration() {
-    navigator.vibrate(200);
+    navigator.vibrate(100);
 }
