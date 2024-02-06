@@ -284,6 +284,8 @@ function randomized() {
 
 function handleClick(clickedCellEvent) {
     navigator.vibrate(200);
+    navigator.vibrate(pattern)
+    window.navigator.vibrate([200, 100, 200])
     if (bot) {
         player = "X";
     }
