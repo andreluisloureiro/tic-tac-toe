@@ -309,7 +309,7 @@ function handleClick(clickedCellEvent) {
     }
 
     handleBoard(clickedCell, clickedCellIndex, row);
-    navigator.vibrate(200);
+    handleVibration()
 }
 
 
@@ -406,4 +406,8 @@ function drawLine(direction, line) {
     } else {
         return
     }
+}
+
+function handleVibration() {
+    navigator.vibrate(200);
 }
