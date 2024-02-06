@@ -283,6 +283,7 @@ function randomized() {
 }
 
 function handleClick(clickedCellEvent) {
+    navigator.vibrate(200);
     if (bot) {
         player = "X";
     }
@@ -370,35 +371,39 @@ function currentPlayer() {
 
 
 function drawLine(direction, line) {
-    const vlElement = document.getElementsByClassName("vl")[0];
+    if (pointsToWin === 3){
+        const vlElement = document.getElementsByClassName("vl")[0];
 
-    switch (direction) {
-        case "horizontal":
-            if (line >= 0 && line <= 2) {
-                vlElement.classList.add(`row${line + 1}`);
-            }
-            setTimeout(() => showLine(), 150);
-            break;
-
-        case "vertical":
-            if (line === 0 || line === 2) {
-                vlElement.classList.add(`column${line + 1}`);
-            }
-            setTimeout(() => showLine(), 150);
-            break;
-
-        case "negative":
-        case "positive":
-            vlElement.classList.add(direction);
-            setTimeout(() => showDiagonalLine(), 150);
-            break;
-    }
-
-    function showLine() {
-        vlElement.classList.add("appear");
-    }
-
-    function showDiagonalLine() {
-        vlElement.classList.add("diagonal");
+        switch (direction) {
+            case "horizontal":
+                if (line >= 0 && line <= 2) {
+                    vlElement.classList.add(`row${line + 1}`);
+                }
+                setTimeout(() => showLine(), 150);
+                break;
+    
+            case "vertical":
+                if (line === 0 || line === 2) {
+                    vlElement.classList.add(`column${line + 1}`);
+                }
+                setTimeout(() => showLine(), 150);
+                break;
+    
+            case "negative":
+            case "positive":
+                vlElement.classList.add(direction);
+                setTimeout(() => showDiagonalLine(), 150);
+                break;
+        }
+    
+        function showLine() {
+            vlElement.classList.add("appear");
+        }
+    
+        function showDiagonalLine() {
+            vlElement.classList.add("diagonal");
+        }
+    } else {
+        return
     }
 }
