@@ -485,8 +485,8 @@ button:hover {
 @media (max-width : 660px) {
     .container.appear {
         position: fixed;
-    width: 100vw;
-    height: -webkit-fill-available;
+        width: 100vw;
+        height: -webkit-fill-available;
     }
 
     .gameContainer {
@@ -494,6 +494,12 @@ button:hover {
         height: 78vmin;
         position: fixed;
     }
+
+    .gameBoard{
+        position: fixed;
+    top: auto;
+    }
+
 
     .gameContainer.longWay {
         grid-template: repeat(6, 1fr) / repeat(6, 1fr);
