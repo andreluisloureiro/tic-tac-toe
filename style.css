@@ -483,23 +483,11 @@ button:hover {
 
 
 @media (max-width : 660px) {
-    .container.appear {
-        position: fixed;
-        width: 100vw;
-        height: -webkit-fill-available;
-    }
 
     .gameContainer {
         width: 78vmin;
         height: 78vmin;
-        position: fixed;
     }
-
-    .gameBoard{
-        position: fixed;
-    top: auto;
-    }
-
 
     .gameContainer.longWay {
         grid-template: repeat(6, 1fr) / repeat(6, 1fr);
@@ -553,7 +541,6 @@ button:hover {
         height: 73vmin;
         width: 2vmin;
         transition: 300ms;
-        position: fixed;
     }
     
     .vl.diagonal {
