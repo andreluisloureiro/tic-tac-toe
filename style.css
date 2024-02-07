@@ -486,13 +486,13 @@ button:hover {
     .container {
         position: fixed;
         justify-content: center;
-    align-items: center;
-    width: 100vw;
+        align-items: center;
+        width: 100vw;
     }
 
     .gameContainer {
-        width: 77vmin;
-        height: 77vmin;
+        width: 78vmin;
+        height: 78vmin;
     }
 
     .gameContainer.longWay {
