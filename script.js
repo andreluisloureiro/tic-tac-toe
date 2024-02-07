@@ -251,8 +251,9 @@ function handleBoard(clickedCell, clickedCellIndex, row) {
         var colour = player === "X" ? "#d86c23" : "#04c0b2";
         clickedCell.style.color = colour;
         player = player === "X" ? "O" : "X";
+        currentPlayer()
+        setArraysForChecking()
     }
-    setArraysForChecking()
 }
 
 function randomized() {
@@ -294,19 +295,7 @@ function handleClick(clickedCellEvent) {
     const clickedCell = clickedCellEvent.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('cell-index'));
     const row = parseInt(clickedCell.getAttribute('row'));
-
     currentPlayerCell.push(clickedCell, clickedCellIndex, row);
-
-    const squareX = document.getElementById("squareX");
-    const squareO = document.getElementById("squareO");
-
-    if (player === "O") {
-        squareX.classList.add("current");
-        squareO.classList.remove("current");
-    } else {
-        squareO.classList.add("current");
-        squareX.classList.remove("current");
-    }
 
     handleBoard(clickedCell, clickedCellIndex, row);
     handleVibration()

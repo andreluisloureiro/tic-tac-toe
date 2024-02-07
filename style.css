@@ -256,7 +256,7 @@ button:hover {
     position: fixed;
     pointer-events: all;
     opacity: 100%;
-    bottom: 0px;
+    bottom: -1vh;
 }
 
 .returnMenu.opacity {
@@ -273,7 +273,8 @@ button:hover {
 .restartGameButton {
     height: 10vh;
     margin: 5px;
-    background-color: rgb(245, 113, 25);
+    background-color: #34495e;
+    border: 1vh solid #2c3e50;
     color: #ffffff;
     width: 45%;
     font-family: Helvetica;
@@ -285,7 +286,8 @@ button:hover {
     margin: 5px;
     width: 45%;
     opacity: 100%;
-    background-color: rgb(2, 150, 140);
+    background-color: #34495e;
+    border: 1vh solid #2c3e50;
     color: #ffffff;
     font-family: Helvetica;
     font-weight: bold;
@@ -368,13 +370,13 @@ button:hover {
     height: 14.5vh;
     width: 14.5vh;
     border-radius: 2vh 0px 0px 2vh;
-    color: #04c0b2;
+    color: rgb(83 255 243);
     font-size: 55px;
     margin-left: 2px;
 }
 
 .squareO.win {
-    color: rgb(2, 150, 140);
+    color: rgb(83 255 243);
     animation: owinner 1800ms infinite;
 }
 
@@ -482,6 +484,7 @@ button:hover {
 
 @media (max-width : 660px) {
     .gameContainer {
+        position: fixed;
         width: 77vmin;
         height: 77vmin;
     }
