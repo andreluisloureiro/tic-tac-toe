@@ -483,8 +483,14 @@ button:hover {
 
 
 @media (max-width : 660px) {
-    .gameContainer {
+    .container {
         position: fixed;
+        justify-content: center;
+    align-items: center;
+    width: 100vw;
+    }
+
+    .gameContainer {
         width: 77vmin;
         height: 77vmin;
     }
