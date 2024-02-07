@@ -484,15 +484,13 @@ button:hover {
 
 @media (max-width : 660px) {
     .container {
-        position: fixed;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
+        
     }
 
     .gameContainer {
         width: 78vmin;
         height: 78vmin;
+        position: fixed;
     }
 
     .gameContainer.longWay {
@@ -547,6 +545,7 @@ button:hover {
         height: 73vmin;
         width: 2vmin;
         transition: 300ms;
+        position: fixed;
     }
     
     .vl.diagonal {
