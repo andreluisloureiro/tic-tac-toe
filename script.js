@@ -14,8 +14,6 @@ var victoryCount = { X: 0, O: 0 };
 
 var pointsToWin;
 
-var currentLine = [];
-
 var diagonalArrays;
 
 document.getElementById("startBasicTicTacToe").addEventListener('click', () => { createBoard(3) });
@@ -47,7 +45,6 @@ function printBoard(boardHTML, cellAmount) {
     document.getElementById("gameBoard").append(container);
     if (cellAmount === 6) {
         document.getElementsByClassName("gameContainer")[0].classList.add("longWay")
-        // container.style.width = `${(cellAmount * 50) + (cellAmount * 8)}px`;
         for (var cell = 0; cell < 36; cell++) {
             var currentCell = document.getElementsByClassName("cell")[cell]
             currentCell.classList.add("ticTacToeTwo")

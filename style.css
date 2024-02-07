@@ -483,8 +483,10 @@ button:hover {
 
 
 @media (max-width : 660px) {
-    .container {
-        
+    .container.appear {
+        position: fixed;
+    width: 100vw;
+    height: -webkit-fill-available;
     }
 
     .gameContainer {
