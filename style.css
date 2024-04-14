@@ -339,6 +339,10 @@ button:hover {
     margin-right: 2px;
 }
 
+.squareXText {
+    color: rgb(221, 90, 3);
+}
+
 .squareX.win {
     color: rgb(221, 90, 3);
     animation: xwinner 1800ms infinite;
@@ -373,6 +377,10 @@ button:hover {
     color: rgb(83 255 243);
     font-size: 55px;
     margin-left: 2px;
+}
+
+.squareOText {
+    color: rgb(83 255 243);
 }
 
 .squareO.win {

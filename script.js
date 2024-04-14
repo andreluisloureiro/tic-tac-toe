@@ -397,3 +397,11 @@ function drawLine(direction, line) {
 function handleVibration() {
     navigator.vibrate(100);
 }
+
+
+
+
+
+
+
+
